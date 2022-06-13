@@ -1,0 +1,310 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f6fa;
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#sendForm {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  position: sticky;
+  background-color: white;
+  bottom: 0;
+}
+
+body > * {
+  display: none;
+  overflow: hidden;
+}
+
+body[active-page="loading"] > [page="loading"],
+body[active-page="login"] > [page="login"],
+body[active-page="register"] > [page="register"],
+body[active-page="global-chat"] > [page="global-chat"],
+body[active-page="direct-chat"] > [page="direct-chat"] {
+  display: flex;
+}
+
+body[active-page="global-chat"] > header,
+body[active-page="direct-chat"] > header {
+  display: flex;
+}
+
+body > [page] {
+  flex: 1;
+}
+
+[page="login"],
+[page="register"] {
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form {
+  background-color: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.05);
+}
+
+h3 {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #111723;
+}
+
+h5 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #9096a2;
+  font-weight: normal;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+.mt-24 {
+  margin-top: 24px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #414956;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.auth-form input[type="input"] {
+  border: 1px solid #dadde0;
+  padding: 10px 16px;
+  width: 300px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 2px 4px 0px rgba(34, 60, 80, 0.05);
+  color: #111723;
+  font-size: 14px;
+}
+
+.auth-form input[type="input"]::placeholder {
+  color: #777e8a;
+}
+
+.auth-form button {
+  margin-top: 16px;
+  background-color: #7f56da;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.auth-form button:hover,
+.auth-form button.secondary:hover {
+  background-color: #b096e8;
+}
+
+.auth-form button.secondary {
+  background-color: transparent;
+  color: #4b525a;
+  border: 1px solid #e2e3e6;
+}
+
+header {
+  flex-direction: row;
+  padding: 32px 24px;
+  color: #4a0b46;
+}
+
+header .username {
+  flex: 1;
+}
+
+header button {
+  background-color: #f5f6fa;
+  border: 1px solid #e2e2e7;
+  color: #989898;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+header button:hover {
+  color: #525252;
+  background-color: #fcfcfd;
+  border-color: #d5d5dd;
+}
+
+.app-name {
+  width: 240px;
+  font-size: 22px;
+}
+
+.greeting {
+  flex: 1;
+  font-size: 22px;
+}
+
+.channels {
+  width: 240px;
+  padding: 0 8px;
+}
+
+.channel:hover {
+  background-color: azure;
+}
+
+.channel-group {
+  color: #480b45;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 16px;
+  margin-top: 32px;
+}
+
+.channel {
+  color: #706e81;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.channel:hover {
+  background-color: white;
+}
+
+.channel.selected {
+  background-color: white;
+  color: #ff65ac;
+  position: relative;
+  cursor: default;
+  box-shadow: 0px 2px 4px 0px rgba(34, 60, 80, 0.05);
+}
+
+.channel.selected::before {
+  content: "";
+  width: 2px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  background-color: #ff65ac;
+}
+
+.chat-content {
+  flex: 1;
+  box-shadow: 0px 0px 6px 0px rgba(34, 60, 80, 0.05);
+  border-top-left-radius: 24px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.chat-header {
+  padding: 24px;
+  color: #3a0037;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #efeff2;
+}
+
+.messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.message {
+  padding: 0 24px;
+  margin: 16px 0;
+}
+
+.message__sender {
+  display: inline-block;
+  color: #4e114a;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.message_me .message__sender {
+  color: #ff5f86;
+}
+
+.message_me .message__sender:after {
+  content: " (you)";
+}
+
+.send-date {
+  font-size: 12px;
+  font-weight: bold;
+  color: #999999;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.message__text {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.send-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.send-form input {
+  border: 1px solid #efeff2;
+  border-radius: 16px;
+  flex: 1;
+  padding: 20px;
+}
+
+.send-form input::placeholder {
+  font-weight: bold;
+  color: #bebebe;
+}
+
+.send-form button {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: #ff4776;
+  padding: 8px 24px;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
